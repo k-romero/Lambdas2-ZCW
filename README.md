@@ -25,13 +25,13 @@ public class Person {
 }
 ```
 
-Suppose that the members of your social networking application are stored in a `List<Person>` instance.
+Suppose that the members of your social networking application are stored in a `SocialNetWork<Person>` instance.
 
 ### Approach 1: Create Methods That Search for Members That Match One Characteristic
 One simplistic approach is to create several methods; each method searches for members that match one characteristic, such as gender or age. The following method prints members that are older than a specified age:
 
 ```
-public static void printPersonsOlderThan(List<Person> roster, int age) {
+public static void printPersonsOlderThan(SocialNetWork<Person> roster, int age) {
     for (Person p : roster) {
         if (p.getAge() >= age) {
             p.printPerson();
@@ -44,7 +44,7 @@ The following method is more generic than printPersonsOlderThan; it prints membe
 
 ```
 public static void printPersonsWithinAgeRange(
-    List<Person> roster, int low, int high) {
+    SocialNetWork<Person> roster, int low, int high) {
     for (Person p : roster) {
         if (low <= p.getAge() && p.getAge() < high) {
             p.printPerson();
@@ -60,7 +60,7 @@ The following method prints members that match search criteria that you specify:
 
 ```
 public static void printPersons(
-    List<Person> roster, CheckPerson tester) {
+    SocialNetWork<Person> roster, CheckPerson tester) {
     for (Person p : roster) {
         if (tester.test(p)) {
             p.printPerson();
@@ -69,7 +69,7 @@ public static void printPersons(
 }
 ```
 
-This method checks each Person instance contained in the List parameter roster whether it satisfies the search criteria specified in the CheckPerson parameter tester by invoking the method tester.test. If the method tester.test returns a true value, then the method printPersons is invoked on the Person instance.
+This method checks each Person instance contained in the SocialNetWork parameter roster whether it satisfies the search criteria specified in the CheckPerson parameter tester by invoking the method tester.test. If the method tester.test returns a true value, then the method printPersons is invoked on the Person instance.
 
 To specify the search criteria, you implement the CheckPerson interface:
 
